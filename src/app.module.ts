@@ -1,31 +1,20 @@
 import { Module } from '@nestjs/common';
-import { SequelizeModule } from '@nestjs/sequelize';
-import { ConfigModule } from '@nestjs/config';
-import { ConfigureService } from './config/config.service';
-import { Product } from './products/product.entity';
-import { User } from './users/user.entity';
-import { Admin } from './users/admin.entity';
+import { TypeOrmModule } from '@nestjs/typeorm'
+import {dataSourceOptions} from './db/data-source'
+import { ProductsModule } from './products/products.module';
+import { UsersModule } from './users/users.module';
+import { AdminsModule } from './admins/admins.module';
+import {AppController} from './app.controller'
+import {AppService} from './app.service'
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-    }),
-    SequelizeModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigureService],
-      useFactory: (configService: ConfigureService) => ({
-        dialect: 'mysql',
-        host: configService.databaseConfig.host,
-        port: configService.databaseConfig.port,
-        username: configService.databaseConfig.username,
-        password: configService.databaseConfig.password,
-        database: configService.databaseConfig.database,
-        models: [Product, User, Admin],
-        autoLoadModels: true,
-        synchronize: true,
-      }),
-    }),
+    TypeOrmModule.forRoot(dataSourceOptions),
+    ProductsModule,
+    UsersModule,
+    AdminsModule,
   ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
