@@ -7,7 +7,7 @@ export const dataSourceOptions: DataSourceOptions = {
   password: config.mysql.connection.password,
   database: config.mysql.connection.database,
   entities: ['dist/**/*.entity.js'],
-  migrations: ['dist/app/db/migrations/*.js'],
+  migrations: ['dist/db/migrations/*.js'],
   charset: 'utf8mb4',
 };
 const dataSource = new DataSource(dataSourceOptions);

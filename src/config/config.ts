@@ -1,6 +1,8 @@
-'use strict';
+import { config as loadEnv } from 'dotenv';
+loadEnv();
 
-const appName = 'Techinnover'
+const appName = 'Techinnover';
+
 export const config = {
   appName: appName,
   environment: process.env.NODE_ENV,
@@ -16,13 +18,13 @@ export const config = {
       database: process.env.DATABASE_NAME,
       debug: process.env.DATABASE_DEBUG || false,
     },
-    pool:{
+    pool: {
       min: process.env.DATABASE_POOL_MIN ? Number(process.env.DATABASE_POOL_MIN) : 2,
-      max: process.env.DATABASE_POOL_MAX ? Number(process.env.DATABASE_POOL_MAX) : 2
-    }
+      max: process.env.DATABASE_POOL_MAX ? Number(process.env.DATABASE_POOL_MAX) : 2,
+    },
   },
   jwt: {
     secret: process.env.JWT_SECRET,
     expiresIn: process.env.JWT_EXPIRY,
-  }
-}
+  },
+};
