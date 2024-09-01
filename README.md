@@ -35,8 +35,14 @@ please copy and paste the keys in you just created .env file and fill in the val
 
 ## Running the app
 
-### Firstly, we need to run the migration to have our schemas up. 
+### Firstly, we need to build the App. 
 I have added the script in our package.json file.
+
+```bash
+$ yarn build
+```
+
+### Secondly, we need to run the migration to have our schemas up. 
 
 ```bash
 $ yarn migration:run
