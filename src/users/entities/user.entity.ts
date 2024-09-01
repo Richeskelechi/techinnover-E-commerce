@@ -1,5 +1,10 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
-import { Product } from '../../products/entities/product.entity'; // Adjust the path as needed
+import { Product } from '../../products/entities/product.entity';
+
+export enum Role {
+    USER = 'user',
+    ADMIN = 'admin',
+}
 
 @Entity()
 export class User {
@@ -15,12 +20,22 @@ export class User {
     @Column({ type: 'varchar', nullable: false })
     password: string;
 
+    @Column({
+        type: 'enum',
+        enum: Role,
+        default: Role.USER,
+    })
+    role: Role;
+
+    @Column({ type: 'boolean', default: true })
+    isActive: boolean;
+
     @CreateDateColumn()
     createdAt: Date;
 
     @UpdateDateColumn()
     updatedAt: Date;
 
-    @OneToMany(() => Product, product => product.user) // Define the inverse relationship
+    @OneToMany(() => Product, product => product.user)
     products: Product[];
 }
