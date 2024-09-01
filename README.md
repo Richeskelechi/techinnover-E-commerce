@@ -43,7 +43,6 @@ yarn
 ```
 
 ### Secondly, we need to build the App. 
-I have added the script in our package.json file.
 
 ```bash
 yarn build
