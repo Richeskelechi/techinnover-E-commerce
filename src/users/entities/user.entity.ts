@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany, Index } from 'typeorm';
 import { Product } from '../../products/entities/product.entity';
 
 export enum Role {
@@ -15,6 +15,7 @@ export class User {
     name: string;
 
     @Column({ type: 'varchar', length: 255, nullable: false, unique: true })
+    @Index()
     email: string;
 
     @Column({ type: 'varchar', nullable: false })
@@ -25,6 +26,7 @@ export class User {
         enum: Role,
         default: Role.USER,
     })
+    @Index()
     role: Role;
 
     @Column({ type: 'boolean', default: true })

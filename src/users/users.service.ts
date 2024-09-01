@@ -16,24 +16,17 @@ export class UsersService {
     ) { }
 
     async register(createUserDto: CreateUserDto): Promise<User> {
-        // Check if the email already exists
         const existingUser = await this.userRepository.findOneBy({ email: createUserDto.email });
-
+    
         if (existingUser) {
             throw new ConflictException('Email already in use');
         }
-
-        // Create a new user instance manually
-        const user = new User();
-        user.name = createUserDto.name;
-        user.email = createUserDto.email;
-        user.password = await bcrypt.hash(createUserDto.password, 10);
-
-        if (createUserDto.role) {
-            user.role = createUserDto.role;
-        }
-
-        // Save the user instance to the database
+    
+        const user = this.userRepository.create({
+            ...createUserDto,
+            password: await bcrypt.hash(createUserDto.password, 10),
+        });
+    
         return this.userRepository.save(user);
     }
 
@@ -59,11 +52,25 @@ export class UsersService {
         }
     }
 
-    async findAllUsers(): Promise<Partial<User>[]> {
-        return this.userRepository.find({
-            select: ['id', 'name', 'email', 'role', 'isActive'],
+    async findAllUsers(paginationDto: { page: number, limit: number }): Promise<{ data: User[], total: number, page: number, limit: number }> {
+        const { page, limit } = paginationDto;
+        const [data, total] = await this.userRepository.findAndCount({
+            skip: (page - 1) * limit,
+            take: limit,
+            select: ['id', 'name', 'email', 'role', 'createdAt'],
+            order: {
+                createdAt: 'DESC',
+            },
         });
+    
+        return {
+            data,
+            total,
+            page,
+            limit,
+        };
     }
+    
     
 
     async banUser(id: number): Promise<User> {

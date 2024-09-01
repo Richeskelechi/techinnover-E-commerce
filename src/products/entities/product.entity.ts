@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, CreateDateColumn, UpdateDateColumn, Index } from 'typeorm';
 import { User } from '../../users/entities/user.entity';
 
 @Entity()
@@ -7,6 +7,7 @@ export class Product {
   id: number;
 
   @Column({ type: 'varchar', length: 255, nullable: false })
+  @Index()
   name: string;
 
   @Column({ type: 'text', nullable: false })
@@ -19,6 +20,7 @@ export class Product {
   quantity: number;
 
   @Column({ type: 'boolean', default: false })
+  @Index()
   isApproved: boolean;
 
   @ManyToOne(() => User, (user) => user.products)
