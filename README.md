@@ -17,6 +17,7 @@ https://github.com/Richeskelechi/techinnover-E-commerce.git
 ### Create .env file in the root director and the following to it
 
 ```bash
+
 DATABASE_HOST=
 DATABASE_PORT=
 DATABASE_USER=
@@ -27,8 +28,10 @@ JWT_SECRET=
 JWT_EXPIRY=
 
 PORT=
+
 ```
 The above are the envs that will allow our application to run currently. Ensure you have the database creatd.
+please copy and paste the keys in you just created .env file and fill in the values.
 
 ## Running the app
 
