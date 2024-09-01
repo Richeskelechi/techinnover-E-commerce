@@ -15,15 +15,18 @@ export class Product {
   @Column({ type: 'float', nullable: false })
   price: number;
 
+  @Column({ type: 'int', nullable: false })
+  quantity: number;
+
   @Column({ type: 'boolean', default: false })
   isApproved: boolean;
 
-  @ManyToOne(() => User, (user) => user.products) // Define the relationship
+  @ManyToOne(() => User, (user) => user.products)
   user: User;
 
-  @CreateDateColumn() // Automatically manages createdAt timestamp
+  @CreateDateColumn()
   createdAt: Date;
 
-  @UpdateDateColumn() // Automatically manages updatedAt timestamp
+  @UpdateDateColumn()
   updatedAt: Date;
 }
