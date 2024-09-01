@@ -39,32 +39,32 @@ please copy and paste the keys in you just created .env file and fill in the val
 I have added the script in our package.json file.
 
 ```bash
-$ yarn
+yarn
 ```
 
 ### Secondly, we need to build the App. 
 I have added the script in our package.json file.
 
 ```bash
-$ yarn build
+yarn build
 ```
 
 ### Lastly, we need to run the migration to have our schemas up. 
 
 ```bash
-$ yarn migration:run
+yarn migration:run
 ```
 ## Now let us start the App.
 
 ```bash
 # development
-$ yarn run start
+yarn run start
 
 # watch mode
-$ yarn run start:dev
+yarn run start:dev
 
 # production mode
-$ yarn run start:prod
+yarn run start:prod
 ```
 
 # Happy Coding.
