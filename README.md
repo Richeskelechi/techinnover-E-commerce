@@ -23,7 +23,7 @@ To effectively run this application you must have
 https://github.com/Richeskelechi/techinnover-E-commerce.git
 ```
 
-### Create .env file in the root director and the following to it
+### Create .env file in the root director and add the following to it
 
 ```bash
 
