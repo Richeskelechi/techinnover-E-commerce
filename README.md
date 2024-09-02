@@ -31,7 +31,8 @@ PORT=
 
 ```
 The above are the envs that will allow our application to run currently. Ensure you have the database creatd.
-please copy and paste the keys in you just created .env file and fill in the values.
+please copy and paste the keys in you just created .env file and fill in the values. 
+A sample of the env file has be created and called .env.example
 
 ## Running the app
 
@@ -64,6 +65,12 @@ yarn run start:dev
 
 # production mode
 yarn run start:prod
+```
+
+## You can also view the documentation from the url below. Please Note that if you are using a different port please change the port to the one your app is listening to
+
+```bash
+http://localhost:3000/docs
 ```
 
 # Happy Coding.
