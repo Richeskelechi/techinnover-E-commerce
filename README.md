@@ -5,10 +5,19 @@ An E-commerce backend API built with node js and nest js.
 
 This project is a simple e-commerce system that allows unauthenticated users to view approved products, authenticated users to manage their products, and an admin to manage users and products.
 
+## Requirements
+
+To effectively run this application you must have
+1. Node installed
+2. mysql installed
+3. npm installed
+4. nest js installed
+5. git (optional) but it is needed to clone the repository.
+
 
 ## Installation
 
-### Pull From This Repo
+### Clone This Repository to your local system
 
 ```bash
 https://github.com/Richeskelechi/techinnover-E-commerce.git
