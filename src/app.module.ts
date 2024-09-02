@@ -15,7 +15,7 @@ import { CustomThrottlerGuard } from './request-guard'
   imports: [
     ThrottlerModule.forRoot([{
       ttl: 60000,
-      limit: 5,
+      limit: 25,
     }]),
     TypeOrmModule.forRoot(dataSourceOptions),
     ProductsModule,
